@@ -830,10 +830,13 @@ class PhpunitOpenTestClassCommand(PhpunitTextBase):
         if not self.is_php_buffer():
             return False
         if self.is_test_buffer() or self.is_tests_buffer():
-            return False
-        path = self.find_test_file()
-        if path is None:
-            return False
+            path = self.find_tested_file()
+            if path is None:
+                return False
+        else:
+            path = self.find_test_file()
+            if path is None:
+                return False
         self.file_to_open = path[0]
         return True
 
