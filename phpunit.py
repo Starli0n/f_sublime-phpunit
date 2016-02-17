@@ -199,13 +199,13 @@ class PhpunitCommand(CommandBase):
         # remove the folder from the configfile
         if configfile.startswith(folder):
             configfile = configfile[len(folder):]
-            if configfile[0] == "/":
+            if configfile[0] == os.path.sep:
                 configfile = configfile[1:]
 
         # remove the folder from the testfile
         if testfile.startswith(folder):
             testfile = testfile[len(folder):]
-            if testfile[0] == "/":
+            if testfile[0] == os.path.sep:
                 testfile = testfile[1:]
 
         if os.path.isfile(os.path.join(folder, configfile)):
